@@ -38,3 +38,6 @@ _darcs
 
 # datasets
 datasets/*
+
+# nohuo
+nohup.out
