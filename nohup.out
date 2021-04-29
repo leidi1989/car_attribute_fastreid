@@ -1,6 +1,6 @@
 Command Line Args: Namespace(config_file='projects/FastAttr/configs/compcars.yml', dist_url='tcp://127.0.0.1:50152', eval_only=False, machine_rank=0, num_gpus=1, num_machines=1, opts=[], resume=False)
-[32m[04/29 11:13:32 fastreid]: [0mRank of current process: 0. World size: 1
-[32m[04/29 11:13:33 fastreid]: [0mEnvironment info:
+[32m[04/29 14:30:10 fastreid]: [0mRank of current process: 0. World size: 1
+[32m[04/29 14:30:11 fastreid]: [0mEnvironment info:
 ----------------------  ---------------------------------------------------------------------------------
 sys.platform            linux
 Python                  3.8.8 (default, Apr 13 2021, 19:58:26) [GCC 7.3.0]
@@ -31,8 +31,8 @@ PyTorch built with:
   - Magma 2.5.2
   - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=10.2, CUDNN_VERSION=7.6.5, CXX_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/c++, CXX_FLAGS= -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.8.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, 
 
-[32m[04/29 11:13:33 fastreid]: [0mCommand line arguments: Namespace(config_file='projects/FastAttr/configs/compcars.yml', dist_url='tcp://127.0.0.1:50152', eval_only=False, machine_rank=0, num_gpus=1, num_machines=1, opts=[], resume=False)
-[32m[04/29 11:13:33 fastreid]: [0mContents of args.config_file=projects/FastAttr/configs/compcars.yml:
+[32m[04/29 14:30:11 fastreid]: [0mCommand line arguments: Namespace(config_file='projects/FastAttr/configs/compcars.yml', dist_url='tcp://127.0.0.1:50152', eval_only=False, machine_rank=0, num_gpus=1, num_machines=1, opts=[], resume=False)
+[32m[04/29 14:30:11 fastreid]: [0mContents of args.config_file=projects/FastAttr/configs/compcars.yml:
 _BASE_: compcars_base_attribute.yml
 
 DATASETS:
@@ -40,7 +40,7 @@ DATASETS:
   TESTS: ("PA100K",)
 
 OUTPUT_DIR: projects/FastAttr/logs/compcars/strong_baseline
-[32m[04/29 11:13:33 fastreid]: [0mRunning with full config:
+[32m[04/29 14:30:11 fastreid]: [0mRunning with full config:
 CUDNN_BENCHMARK: True
 DATALOADER:
   NUM_INSTANCE: 4
@@ -195,198 +195,198 @@ TEST:
   ROC:
     ENABLED: False
   THRES: 0.5
-[32m[04/29 11:13:33 fastreid]: [0mFull config saved to /media/richard/ExtPartition/leidi/car_attribute_fastreid/projects/FastAttr/logs/compcars/strong_baseline/config.yaml
-[32m[04/29 11:13:33 fastreid.utils.env]: [0mUsing a generated random seed 33213859
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m=> Loaded PA100K in csv format: 
+[32m[04/29 14:30:11 fastreid]: [0mFull config saved to /media/richard/ExtPartition/leidi/car_attribute_fastreid/projects/FastAttr/logs/compcars/strong_baseline/config.yaml
+[32m[04/29 14:30:11 fastreid.utils.env]: [0mUsing a generated random seed 11431707
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m=> Loaded PA100K in csv format: 
 [36m| subset   | # images   |
 |:---------|:-----------|
 | train    | 130538     |
 | val      | 2923       |
 | total    | 133461     |[0m
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0mattributes:
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m  0: abt
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m  1: bac
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m  2: conquest
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m  3: ds
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m  4: dacia
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m  5: fisker
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m  6: gmc
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m  7: gumpert
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m  8: hennessey
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m  9: icona
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 10: jeep
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 11: ktm
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 12: melkus
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 13: mg
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 14: mini
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 15: mazzanti
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 16: noble
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 17: pgo
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 18: spirra
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 19: ssc
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 20: scion
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 21: tesla
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 22: tvr
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 23: tramontana
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 24: zenvo
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 25: smart
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 26: yiqi
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 27: mitsubishi
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 28: shangqidatong
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 29: spykernv
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 30: dongnan
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 31: dongfeng
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 32: dongfengxiaokang
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 33: dongfengfengdu
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 34: dongfengfengshen
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 35: dongfengfengxing
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 36: zxauto
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 37: zhonghua
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 38: toyota
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 39: zinoro
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 40: jiulong
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 41: isuzu
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 42: wuling
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 43: acchnitzer
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 44: zoyte
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 45: iveco
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 46: bufori
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 47: porsche
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 48: mitsuoka
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 49: chrysler
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 50: lamorghini
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 51: kombat
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 52: cadillac
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 53: buck
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 54: lifan
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 55: lorinser
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 56: rolls-royce
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 57: baw
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 58: baihc
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 59: beiqiweiwang
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 60: beiqihuansu
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 61: beiqinewenergy
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 62: huapu
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 63: huatai
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 64: huaqi
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 65: carlsson
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 66: shuanghuan
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 67: shuanglong
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 68: geely
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 69: venucia
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 70: haval
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 71: hafei
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 72: volkswagen
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 73: daihatsu
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 74: chrey
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 75: besturn
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 76: benz
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 77: audi
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 78: wisemann
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 79: wealeak
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 80: bwm
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 81: baojun
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 82: bentley
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 83: brabus
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 84: bugatti
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 85: pagani
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 86: guangqichuanqi
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 87: gac
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 88: karry
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 89: ciimo
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 90: chtc
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 91: jaguar
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 92: morgan
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 93: subaru
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 94: skoda
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 95: xinkai
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 96: nissan
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 97: changhe
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 98: ranz
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m 99: honda
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m100: lincoln
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m101: peugeot
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m102: opel
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m103: oley
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m104: byd
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m105: jonway
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m106: huizhong
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m107: jianghuai
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m108: jiangling
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m109: vauxhall
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m110: volvo
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m111: ferrari
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m112: haige
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m113: haima
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m114: haima(zhengzhou)
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m115: cheetah
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m116: maserati
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m117: hyundai
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m118: everus
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m119: ruiqi
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m120: fuqiqiteng
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m121: ford
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m122: futian
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m123: fudi
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m124: koenigsegg
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m125: hongqi
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m126: luxgen
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m127: saab
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m128: denza
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m129: yingzhi
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m130: infiniti
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m131: roewe
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m132: lotus
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m133: fiat
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m134: saab
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m135: lancia
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m136: seat
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m137: qoros
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m138: acura
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m139: kia
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m140: lotus
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m141: land-rover
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m142: mclaren
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m143: maybach
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m144: dodge
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m145: mustang
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m146: jinlv
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m147: jinbei
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m148: suzuki
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m149: greatwall
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m150: changanbusiness
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m151: changan
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m152: alfaromeo
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m153: astonmartin
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m154: lufeng
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m155: shanqitongjia
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m156: chevy
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m157: citroen
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m158: lexus
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m159: renault
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m160: shouwang
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m161: mazda
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m162: huanghai
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m163: unavailable
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m164: mpv
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m165: suv
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m166: sedan
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m167: hatchback
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m168: minibus
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m169: fastback
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m170: estate
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m171: pickup
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m172: hardtopconvertible
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m173: sports
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m174: crossover
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m175: convertible
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m------------------------------
-[32m[04/29 11:13:34 fastreid.attr_dataset]: [0m# attributes: 176
-[32m[04/29 11:13:34 fastreid.data.build]: [0mUsing training sampler TrainingSampler
-[32m[04/29 11:13:36 fastreid.modeling.backbones.resnet]: [0mLoading pretrained model from /home/cui/.cache/torch/checkpoints/resnet50-19c8e357.pth
-[32m[04/29 11:13:36 fastreid.modeling.backbones.resnet]: [0mThe checkpoint state_dict contains keys that are not used by the model:
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0mattributes:
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m  0: abt
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m  1: bac
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m  2: conquest
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m  3: ds
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m  4: dacia
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m  5: fisker
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m  6: gmc
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m  7: gumpert
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m  8: hennessey
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m  9: icona
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 10: jeep
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 11: ktm
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 12: melkus
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 13: mg
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 14: mini
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 15: mazzanti
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 16: noble
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 17: pgo
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 18: spirra
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 19: ssc
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 20: scion
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 21: tesla
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 22: tvr
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 23: tramontana
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 24: zenvo
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 25: smart
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 26: yiqi
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 27: mitsubishi
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 28: shangqidatong
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 29: spykernv
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 30: dongnan
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 31: dongfeng
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 32: dongfengxiaokang
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 33: dongfengfengdu
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 34: dongfengfengshen
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 35: dongfengfengxing
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 36: zxauto
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 37: zhonghua
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 38: toyota
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 39: zinoro
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 40: jiulong
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 41: isuzu
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 42: wuling
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 43: acchnitzer
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 44: zoyte
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 45: iveco
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 46: bufori
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 47: porsche
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 48: mitsuoka
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 49: chrysler
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 50: lamorghini
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 51: kombat
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 52: cadillac
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 53: buck
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 54: lifan
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 55: lorinser
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 56: rolls-royce
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 57: baw
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 58: baihc
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 59: beiqiweiwang
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 60: beiqihuansu
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 61: beiqinewenergy
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 62: huapu
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 63: huatai
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 64: huaqi
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 65: carlsson
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 66: shuanghuan
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 67: shuanglong
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 68: geely
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 69: venucia
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 70: haval
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 71: hafei
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 72: volkswagen
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 73: daihatsu
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 74: chrey
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 75: besturn
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 76: benz
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 77: audi
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 78: wisemann
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 79: wealeak
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 80: bwm
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 81: baojun
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 82: bentley
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 83: brabus
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 84: bugatti
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 85: pagani
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 86: guangqichuanqi
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 87: gac
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 88: karry
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 89: ciimo
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 90: chtc
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 91: jaguar
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 92: morgan
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 93: subaru
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 94: skoda
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 95: xinkai
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 96: nissan
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 97: changhe
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 98: ranz
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m 99: honda
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m100: lincoln
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m101: peugeot
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m102: opel
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m103: oley
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m104: byd
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m105: jonway
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m106: huizhong
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m107: jianghuai
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m108: jiangling
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m109: vauxhall
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m110: volvo
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m111: ferrari
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m112: haige
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m113: haima
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m114: haima(zhengzhou)
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m115: cheetah
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m116: maserati
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m117: hyundai
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m118: everus
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m119: ruiqi
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m120: fuqiqiteng
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m121: ford
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m122: futian
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m123: fudi
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m124: koenigsegg
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m125: hongqi
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m126: luxgen
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m127: saab
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m128: denza
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m129: yingzhi
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m130: infiniti
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m131: roewe
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m132: lotus
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m133: fiat
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m134: saab
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m135: lancia
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m136: seat
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m137: qoros
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m138: acura
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m139: kia
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m140: lotus
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m141: land-rover
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m142: mclaren
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m143: maybach
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m144: dodge
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m145: mustang
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m146: jinlv
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m147: jinbei
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m148: suzuki
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m149: greatwall
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m150: changanbusiness
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m151: changan
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m152: alfaromeo
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m153: astonmartin
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m154: lufeng
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m155: shanqitongjia
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m156: chevy
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m157: citroen
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m158: lexus
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m159: renault
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m160: shouwang
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m161: mazda
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m162: huanghai
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m163: unavailable
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m164: mpv
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m165: suv
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m166: sedan
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m167: hatchback
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m168: minibus
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m169: fastback
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m170: estate
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m171: pickup
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m172: hardtopconvertible
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m173: sports
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m174: crossover
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m175: convertible
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m------------------------------
+[32m[04/29 14:30:12 fastreid.attr_dataset]: [0m# attributes: 176
+[32m[04/29 14:30:12 fastreid.data.build]: [0mUsing training sampler TrainingSampler
+[32m[04/29 14:30:15 fastreid.modeling.backbones.resnet]: [0mLoading pretrained model from /home/cui/.cache/torch/checkpoints/resnet50-19c8e357.pth
+[32m[04/29 14:30:15 fastreid.modeling.backbones.resnet]: [0mThe checkpoint state_dict contains keys that are not used by the model:
   [35mfc.{weight, bias}[0m
-[32m[04/29 11:13:36 fastreid.engine.defaults]: [0mModel:
+[32m[04/29 14:30:15 fastreid.engine.defaults]: [0mModel:
 AttrBaseline(
   (backbone): ResNet(
     (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
@@ -593,6 +593,5 @@ AttrBaseline(
   warnings.warn(
 /home/cui/miniconda3/envs/fastreid/lib/python3.8/site-packages/torchvision/transforms/transforms.py:257: UserWarning: Argument interpolation should be of type InterpolationMode instead of int. Please, use InterpolationMode enum.
   warnings.warn(
-[32m[04/29 11:14:05 fastreid.utils.checkpoint]: [0mNo checkpoint found. Training model from scratch
-[32m[04/29 11:14:05 fastreid.engine.train_loop]: [0mStarting training from epoch 0
-[32m[04/29 11:24:57 fastreid.utils.events]: [0m eta: 3:24:31  epoch/iter: 0/199  total_loss: 0.6696  time: 3.2764  data_time: 2.9847  lr: 1.12e-02  max_mem: 19145M
+[32m[04/29 14:30:18 fastreid.utils.checkpoint]: [0mNo checkpoint found. Training model from scratch
+[32m[04/29 14:30:18 fastreid.engine.train_loop]: [0mStarting training from epoch 0

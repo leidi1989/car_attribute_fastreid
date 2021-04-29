@@ -1,3 +1,11 @@
+'''
+Description: 
+Version: 
+Author: Leidi
+Date: 2021-04-29 14:28:02
+LastEditors: Leidi
+LastEditTime: 2021-04-29 14:28:30
+'''
 # encoding: utf-8
 """
 @author:  liaoxingyu
@@ -90,7 +98,8 @@ class AttrEvaluator(DatasetEvaluator):
             gt_labels = self.gt_labels
 
         pred_logits = torch.stack(pred_logits, dim=0).numpy()
-        gt_labels = torch.stack(gt_labels, dim=0).numpy()
+        # 修改bug，将计算换至cpu处理
+        gt_labels = torch.stack(gt_labels, dim=0).cpu().numpy()
 
         # Pedestrian attribute metrics
         thres = self.cfg.TEST.THRES
