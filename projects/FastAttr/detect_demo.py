@@ -4,7 +4,7 @@ Version:
 Author: Leidi
 Date: 2021-04-30 11:03:41
 LastEditors: Leidi
-LastEditTime: 2021-04-30 14:44:23
+LastEditTime: 2021-04-30 15:11:43
 '''
 import numpy as np
 import cv2
@@ -107,7 +107,13 @@ def setup(args):
 
 def main(args):
 
+    # 所需文件路径
     attribute_list_path = r'/home/leidi/Dataset/CompCars_analyze/ImageSets/encode_list.txt'
+    # image_path = r'/home/leidi/Dataset/CompCars_analyze/data/hyundai_4454e66af004dc.jpg'
+    image_path = r'/home/leidi/Dataset/CompCars_analyze/data/zxauto_fe54cba1cab994.jpg'
+    pretrain_path = r'/home/leidi/Workspace/car_attribute_fastreid/projects/FastAttr/logs/compcars/strong_baseline/model_best.pth'
+    
+    # 获取属性列表
     attribute_list = []
     with open(attribute_list_path, 'r') as f:
         for n in f.readlines():
@@ -115,15 +121,12 @@ def main(args):
     attribute_make_id_list = attribute_list[0 : 163]
     attribute_car_type_id_list = attribute_list[163 : ]
     
-    # image_path = r'/home/leidi/Dataset/CompCars_analyze/data/hyundai_4454e66af004dc.jpg'
-    image_path = r'/home/leidi/Dataset/CompCars_analyze/data/zxauto_fe54cba1cab994.jpg'
-    pretrain_path = r'/home/leidi/Workspace/car_attribute_fastreid/projects/FastAttr/logs/compcars/strong_baseline/model_best.pth'
-    cfg = setup(args)
-
     # 读取模型及对应与训练权重
+    cfg = setup(args)
     model = AttrTrainer.build_model(cfg)    # 按照配置文件构建模型
     Checkpointer(model).load(pretrain_path)
     model.eval()
+    
     
     # 读取图片
     transform = transforms.ToTensor()
@@ -131,15 +134,16 @@ def main(args):
     image = transform(image).unsqueeze(0).cuda()
     
     # inference
-    result = model(image)
-    attibute_result = result.cpu().detach().numpy()
+    with torch.no_grad():
+        result = model(image)
+        attibute_result = result.cpu().detach().numpy()
 
-    # print(attibute_result[0])
+    # decode
     result_make_id_list = attibute_result[0][0:163]
     result_car_type_list = attibute_result[0][163:]
-
     make_id = attribute_make_id_list[argmax(result_make_id_list)]
     car = attribute_car_type_id_list[argmax(result_car_type_list)]
+    
     print(make_id, car)
     print('\nend.')
 
