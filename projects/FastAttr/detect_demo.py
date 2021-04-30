@@ -4,28 +4,29 @@ Version:
 Author: Leidi
 Date: 2021-04-30 11:03:41
 LastEditors: Leidi
-LastEditTime: 2021-04-30 14:07:53
+LastEditTime: 2021-04-30 14:44:23
 '''
+import numpy as np
+import cv2
+from torchvision import transforms
+import torch
 import logging
 import re
 import sys
+from numpy.core.fromnumeric import argmax
 # print('\n', sys.path, '\n')
 
 sys.path.append('.')
 
-import torch
-from torchvision import transforms
-import cv2
-
-from projects.FastAttr.fastattr import *
-from fastreid.utils import comm
-from fastreid.data.transforms import build_transforms
-from fastreid.data.build import _root, build_reid_train_loader, build_reid_test_loader
-from fastreid.data.datasets import DATASET_REGISTRY
-from fastreid.utils.checkpoint import Checkpointer
-from fastreid.engine import default_argument_parser, default_setup, launch
-from fastreid.engine import DefaultTrainer
 from fastreid.config import get_cfg
+from fastreid.engine import DefaultTrainer
+from fastreid.engine import default_argument_parser, default_setup, launch
+from fastreid.utils.checkpoint import Checkpointer
+from fastreid.data.datasets import DATASET_REGISTRY
+from fastreid.data.build import _root, build_reid_train_loader, build_reid_test_loader
+from fastreid.data.transforms import build_transforms
+from fastreid.utils import comm
+from projects.FastAttr.fastattr import *
 
 
 class AttrTrainer(DefaultTrainer):
@@ -105,11 +106,20 @@ def setup(args):
 
 
 def main(args):
+
+    attribute_list_path = r'/home/leidi/Dataset/CompCars_analyze/ImageSets/encode_list.txt'
+    attribute_list = []
+    with open(attribute_list_path, 'r') as f:
+        for n in f.readlines():
+            attribute_list.append(n.strip('\n'))
+    attribute_make_id_list = attribute_list[0 : 163]
+    attribute_car_type_id_list = attribute_list[163 : ]
     
-    image_path = r'/home/leidi/Dataset/CompCars_analyze/data/changan_1cb8c360d2adec.jpg'
+    # image_path = r'/home/leidi/Dataset/CompCars_analyze/data/hyundai_4454e66af004dc.jpg'
+    image_path = r'/home/leidi/Dataset/CompCars_analyze/data/zxauto_fe54cba1cab994.jpg'
     pretrain_path = r'/home/leidi/Workspace/car_attribute_fastreid/projects/FastAttr/logs/compcars/strong_baseline/model_best.pth'
     cfg = setup(args)
-    
+
     # 读取模型及对应与训练权重
     model = AttrTrainer.build_model(cfg)    # 按照配置文件构建模型
     Checkpointer(model).load(pretrain_path)
@@ -119,25 +129,19 @@ def main(args):
     transform = transforms.ToTensor()
     image = cv2.imread(image_path)
     image = transform(image).unsqueeze(0).cuda()
+    
     # inference
     result = model(image)
-    print(result)
-    print(result.shape)
-    # if args.eval_only:
-    #     cfg.defrost()
-    #     cfg.MODEL.BACKBONE.PRETRAIN = True
-    #     model = AttrTrainer.build_model(cfg)
+    attibute_result = result.cpu().detach().numpy()
 
-    #     pretrain_path = r'/home/leidi/Workspace/car_attribute_fastreid/projects/FastAttr/logs/compcars/strong_baseline/model_best.pth'
+    # print(attibute_result[0])
+    result_make_id_list = attibute_result[0][0:163]
+    result_car_type_list = attibute_result[0][163:]
 
-    #     Checkpointer(model).load(cfg.MODEL.WEIGHTS)  # load trained model
-
-    #     res = AttrTrainer.test(cfg, model)
-    #     return res
-
-    # trainer = AttrTrainer(cfg)
-    # trainer.resume_or_load(resume=args.resume)
-    # return trainer.train()
+    make_id = attribute_make_id_list[argmax(result_make_id_list)]
+    car = attribute_car_type_id_list[argmax(result_car_type_list)]
+    print(make_id, car)
+    print('\nend.')
 
 
 if __name__ == "__main__":
