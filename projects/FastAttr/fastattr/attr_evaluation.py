@@ -4,7 +4,7 @@ Version:
 Author: Leidi
 Date: 2021-04-29 14:28:02
 LastEditors: Leidi
-LastEditTime: 2021-04-29 14:28:30
+LastEditTime: 2021-04-30 16:32:08
 '''
 # encoding: utf-8
 """
@@ -40,6 +40,7 @@ class AttrEvaluator(DatasetEvaluator):
     def process(self, inputs, outputs):
         self.gt_labels.extend(inputs["targets"])
         self.pred_logits.extend(outputs.cpu())
+        print()
 
     @staticmethod
     def get_attr_metrics(gt_labels, pred_logits, thres):
