@@ -4,7 +4,7 @@ Version:
 Author: Leidi
 Date: 2021-04-30 11:03:41
 LastEditors: Leidi
-LastEditTime: 2021-04-30 15:11:43
+LastEditTime: 2021-04-30 17:13:50
 '''
 import numpy as np
 import cv2
@@ -14,6 +14,8 @@ import logging
 import re
 import sys
 from numpy.core.fromnumeric import argmax
+import copy
+
 # print('\n', sys.path, '\n')
 
 sys.path.append('.')
@@ -112,7 +114,7 @@ def main(args):
     # image_path = r'/home/leidi/Dataset/CompCars_analyze/data/hyundai_4454e66af004dc.jpg'
     image_path = r'/home/leidi/Dataset/CompCars_analyze/data/zxauto_fe54cba1cab994.jpg'
     pretrain_path = r'/home/leidi/Workspace/car_attribute_fastreid/projects/FastAttr/logs/compcars/strong_baseline/model_best.pth'
-    
+    thres = 0.5
     # 获取属性列表
     attribute_list = []
     with open(attribute_list_path, 'r') as f:
@@ -134,9 +136,24 @@ def main(args):
     image = transform(image).unsqueeze(0).cuda()
     
     # inference
-    with torch.no_grad():
-        result = model(image)
-        attibute_result = result.cpu().detach().numpy()
+    result = model(image)
+    pred_logits = []
+    pred_logits.extend(result.cpu())
+    
+    pred_labels = copy.copy(pred_logits)
+    pred_labels[pred_logits < thres] = 0
+    pred_labels[pred_logits >= thres] = 1
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    attibute_result = result.cpu().detach().numpy()
 
     # decode
     result_make_id_list = attibute_result[0][0:163]
