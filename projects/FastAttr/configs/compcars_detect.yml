@@ -1,0 +1,7 @@
+_BASE_: compcars_base_attribute.yml
+
+DATASETS:
+  NAMES: ("PA100K",)
+  TESTS: ("PA100K",)
+
+OUTPUT_DIR: projects/FastAttr/logs/compcars/strong_baseline

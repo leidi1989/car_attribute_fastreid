@@ -120,13 +120,15 @@ class Baseline(nn.Module):
         """
         Normalize and batch the input images.
         """
+        # TODO 图片前处理
         if isinstance(batched_inputs, dict):
             images = batched_inputs['images']
         elif isinstance(batched_inputs, torch.Tensor):
             images = batched_inputs
         else:
             raise TypeError("batched_inputs must be dict or torch.Tensor, but get {}".format(type(batched_inputs)))
-
+        a = self.pixel_mean
+        b = self.pixel_std
         images.sub_(self.pixel_mean).div_(self.pixel_std)
         return images
 
