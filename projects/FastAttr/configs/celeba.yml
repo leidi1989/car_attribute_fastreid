@@ -1,0 +1,7 @@
+_BASE_: Base-attribute_CelebA_analyze_4_attributes.yml
+
+DATASETS:
+  NAMES: ("CelebA_analyze_4_attributes",)
+  TESTS: ("CelebA_analyze_4_attributes",)
+
+OUTPUT_DIR: projects/FastAttr/logs/CelebA_analyze_4_attributes/strong_baseline

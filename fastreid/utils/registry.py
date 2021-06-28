@@ -4,7 +4,7 @@ Version:
 Author: Leidi
 Date: 2021-04-19 15:22:50
 LastEditors: Leidi
-LastEditTime: 2021-04-29 10:13:43
+LastEditTime: 2021-06-28 17:34:36
 '''
 #!/usr/bin/env python3
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
@@ -63,7 +63,6 @@ class Registry(object):
         name = obj.__name__  # pyre-ignore
         self._do_register(name, obj)
 
-    # TODO 修改数据集类别
     def get(self, name: str) -> object:
         ret = self._obj_map.get(name)
         if ret is None:

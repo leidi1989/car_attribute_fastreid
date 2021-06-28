@@ -154,7 +154,6 @@ def inference_on_dataset(model, data_loader, evaluator, flip_test=False):
         )
     )
     results = evaluator.evaluate()
-
     # An evaluator may return None when not in main process.
     # Replace it by an empty dict instead to make it easier for downstream code to handle
     if results is None:

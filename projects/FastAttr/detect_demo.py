@@ -4,31 +4,34 @@ Version:
 Author: Leidi
 Date: 2021-04-30 11:03:41
 LastEditors: Leidi
-LastEditTime: 2021-04-30 17:13:50
+LastEditTime: 2021-05-11 10:10:23
 '''
+import sys
+sys.path.append('.')
+
+from projects.FastAttr.fastattr import *
+from fastreid.utils import comm
+from fastreid.data.transforms import build_transforms
+from fastreid.data.build import _root, build_reid_train_loader, build_reid_test_loader
+from fastreid.data.datasets import DATASET_REGISTRY
+from fastreid.utils.checkpoint import Checkpointer
+from fastreid.engine import default_argument_parser, default_setup, launch
+from fastreid.engine import DefaultTrainer
+from fastreid.config import get_cfg
 import numpy as np
 import cv2
 from torchvision import transforms
 import torch
 import logging
 import re
-import sys
+
+import os
 from numpy.core.fromnumeric import argmax
 import copy
 
 # print('\n', sys.path, '\n')
 
-sys.path.append('.')
 
-from fastreid.config import get_cfg
-from fastreid.engine import DefaultTrainer
-from fastreid.engine import default_argument_parser, default_setup, launch
-from fastreid.utils.checkpoint import Checkpointer
-from fastreid.data.datasets import DATASET_REGISTRY
-from fastreid.data.build import _root, build_reid_train_loader, build_reid_test_loader
-from fastreid.data.transforms import build_transforms
-from fastreid.utils import comm
-from projects.FastAttr.fastattr import *
 
 
 class AttrTrainer(DefaultTrainer):
@@ -110,59 +113,57 @@ def setup(args):
 def main(args):
 
     # 所需文件路径
-    attribute_list_path = r'/home/leidi/Dataset/CompCars_analyze/ImageSets/encode_list.txt'
-    # image_path = r'/home/leidi/Dataset/CompCars_analyze/data/hyundai_4454e66af004dc.jpg'
-    image_path = r'/home/leidi/Dataset/CompCars_analyze/data/zxauto_fe54cba1cab994.jpg'
-    pretrain_path = r'/home/leidi/Workspace/car_attribute_fastreid/projects/FastAttr/logs/compcars/strong_baseline/model_best.pth'
-    thres = 0.5
+    attribute_list_path = r'/home/leidi/Dataset/CompCars_6_classes_analyze/ImageSets/encode_list.txt'
+    detect_source_path = r'/home/leidi/Dataset/CompCars_6_classes_analyze/data'
+    pretrain_path = r'/home/leidi/Workspace/car_attribute_fastreid/projects/FastAttr/logs/compcars_20210511/strong_baseline/model_best.pth'
+    thres = 0.7
+    tpye_split_key = 'mpv'
+    
     # 获取属性列表
     attribute_list = []
     with open(attribute_list_path, 'r') as f:
         for n in f.readlines():
             attribute_list.append(n.strip('\n'))
-    attribute_make_id_list = attribute_list[0 : 163]
-    attribute_car_type_id_list = attribute_list[163 : ]
-    
+    tpye_split = attribute_list.index(tpye_split_key)
+    attribute_make_id_list = attribute_list[0: tpye_split]
+    attribute_car_type_id_list = attribute_list[tpye_split:]
+
     # 读取模型及对应与训练权重
     cfg = setup(args)
     model = AttrTrainer.build_model(cfg)    # 按照配置文件构建模型
     Checkpointer(model).load(pretrain_path)
     model.eval()
-    
-    
-    # 读取图片
-    transform = transforms.ToTensor()
-    image = cv2.imread(image_path)
-    image = transform(image).unsqueeze(0).cuda()
-    
-    # inference
-    result = model(image)
-    pred_logits = []
-    pred_logits.extend(result.cpu())
-    
-    pred_labels = copy.copy(pred_logits)
-    pred_labels[pred_logits < thres] = 0
-    pred_labels[pred_logits >= thres] = 1
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    attibute_result = result.cpu().detach().numpy()
 
-    # decode
-    result_make_id_list = attibute_result[0][0:163]
-    result_car_type_list = attibute_result[0][163:]
-    make_id = attribute_make_id_list[argmax(result_make_id_list)]
-    car = attribute_car_type_id_list[argmax(result_car_type_list)]
-    
-    print(make_id, car)
-    print('\nend.')
+    # 读取图片
+    for one_picture in os.listdir(detect_source_path):
+        image_path = os.path.join(detect_source_path, one_picture)
+        transform = transforms.ToTensor()
+        image = cv2.imread(image_path)
+        image = transform(image).unsqueeze(0).cuda()
+
+        # inference
+        result = model(image).cpu().detach().numpy()
+        pred_labels = copy.copy(result)
+        pred_labels[result < thres] = 0
+        pred_labels[result >= thres] = 1
+
+        # decode
+        result_list = pred_labels[0]
+        result_make_id_list = result_list[0:tpye_split]
+        result_car_type_list = result_list[tpye_split:]
+        make_id = np.where(result_make_id_list == 1)
+        car_type = np.where(result_car_type_list == 1)
+
+        make_id_list = []
+        car_list = []
+        for n in range(0, len(make_id[0])):
+            make_id_list.append(attribute_make_id_list[make_id[0][n]])
+
+        for n in range(0, len(car_type[0])):
+            car_list.append(attribute_car_type_id_list[car_type[0][n]])
+
+        print('\n', one_picture, ':')
+        print(make_id_list, car_list)
 
 
 if __name__ == "__main__":

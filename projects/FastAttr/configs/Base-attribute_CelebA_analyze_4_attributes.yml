@@ -7,19 +7,16 @@ MODEL:
     DEPTH: 50x
     LAST_STRIDE: 2
     FEAT_DIM: 2048
-    # FEAT_DIM: 14336
     WITH_IBN: False
     PRETRAIN: True
     PRETRAIN_PATH: /export/home/lxy/.cache/torch/checkpoints/resnet50-19c8e357.pth
-    # PRETRAIN_PATH: /home/leidi/Workspace/car_attribute_fastreid/projects/FastAttr/logs/compcars/strong_baseline/model_best.pth
 
   HEADS:
     NAME: AttrHead
     WITH_BNNECK: True
     POOL_LAYER: FastGlobalAvgPool
     CLS_LAYER: Linear
-    # NUM_CLASSES: 176
-    NUM_CLASSES: 17
+    NUM_CLASSES: 4
 
   LOSSES:
     NAME: ("BinaryCrossEntropyLoss",)
@@ -43,14 +40,14 @@ DATALOADER:
   NUM_WORKERS: 8
 
 SOLVER:
-  MAX_EPOCH: 300
+  MAX_EPOCH: 30
   OPT: SGD
   BASE_LR: 0.04
   BIAS_LR_FACTOR: 2.
   HEADS_LR_FACTOR: 10.
   WEIGHT_DECAY: 0.0005
   WEIGHT_DECAY_BIAS: 0.0005
-  IMS_PER_BATCH: 2
+  IMS_PER_BATCH: 256
 
   NESTEROV: False
   SCHED: MultiStepLR
@@ -62,8 +59,8 @@ SOLVER:
   CHECKPOINT_PERIOD: 10
 
 TEST:
-  EVAL_PERIOD: 1
-  IMS_PER_BATCH: 2
+  EVAL_PERIOD: 10
+  IMS_PER_BATCH: 256
 
 CUDNN_BENCHMARK: True
 

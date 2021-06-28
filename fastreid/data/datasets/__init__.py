@@ -1,3 +1,11 @@
+'''
+Description: 
+Version: 
+Author: Leidi
+Date: 2021-06-28 13:40:31
+LastEditors: Leidi
+LastEditTime: 2021-06-28 16:04:27
+'''
 # encoding: utf-8
 """
 @author:  liaoxingyu
@@ -34,6 +42,7 @@ from .lpw import LPW
 from .shinpuhkan import Shinpuhkan
 from .wildtracker import WildTrackCrop
 from .cuhk_sysu import cuhkSYSU
+from fastreid.data.datasets.celeba_analyze_4_attributes import CelebA_analyze_4_attributes
 
 # Vehicle re-id datasets
 from .veri import VeRi

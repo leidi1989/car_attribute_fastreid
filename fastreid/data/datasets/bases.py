@@ -78,8 +78,9 @@ class Dataset(object):
         pids = set()
         cams = set()
         for info in data:
-            pids.add(info[1])
-            cams.add(info[2])
+            pids.add(info[0])
+            #  修改cams id为1
+            cams.add(1)
         return len(pids), len(cams)
 
     def get_num_pids(self, data):
